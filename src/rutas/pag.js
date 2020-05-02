@@ -8,7 +8,7 @@ router.use(function timeLog (req, res, next) {
 })
 // define la ruta de la página principal
 router.get('/', function (req, res) {
-    res.send('Pagina principal')
+    res.render('partials/index/index')
 })
 // ruta de ligaed
 router.get('/ligaed', function (req, res) {
