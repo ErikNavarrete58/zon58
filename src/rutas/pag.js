@@ -25,7 +25,9 @@ router.get('/ligaed', function (req, res) {
 router.get('/Edlibre', async (req, res) => {
 
  const vistas = await pool.query("SELECT * FROM `tablageneral_mix_ed_20a`");
- res.render('partials/index/edlibre' , { vistas},)
+ const j1 = await pool.query("SELECT * FROM `mixtoprueba2020` WHERE `Jornada` = '3'");
+
+ res.render('partials/index/edlibre' , { vistas , j1 },)
 })
 ///
 

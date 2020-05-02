@@ -1,10 +1,12 @@
 
 
 
-<table class="table table-sm">
-  <thead>
-    <tr>
-      <th scope="col">Esc</th>
+<div class="container p-4 mx-auto">
+
+<table class="table table-sm table-striped table-bordered table-hover">
+  <thead class="table-success">
+    <tr align="center">
+      <th scope="col">Escudo</th>
       <th scope="col">Nombre</th>
       <th scope="col">Puntos</th>
       <th scope="col">GF</th>
@@ -21,8 +23,8 @@
 
       {{#each vistas}}
       
-    <tr>
-      <td><img src="{{Escudo}}" class="img-fluid" width="20px" height="20px"></img></td>
+    <tr align="center">
+      <td><img src="{{Escudo}}" width="40px" height="40px" class="img-thumbnail"></img></td>
       <td>{{Equipo}}</td>
       <td>{{Puntos}}</td>
       <td>{{GF}}</td>
@@ -35,3 +37,47 @@
     
   </tbody>
 </table>
+
+
+<div class="container p-4 mx-auto">
+
+<table class="table table-sm table-striped table-bordered table-hover">
+  <thead class="table-success">
+    <tr align="center">
+      <th scope="col">Escudo</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">GF</th>
+      <th scope="col">GC</th>
+      <th scope="col">Rival</th>
+      <th scope="col">Nombre R.</th>
+      <th scope="col">PT</th>
+
+    </tr>
+  </thead>
+  <tbody>
+      
+      
+      
+
+      {{#each j1}}
+      
+    <tr align="center">
+      <td><img src="{{Escudo}}" width="40px" height="40px" class="img-thumbnail"></img></td>
+      <td>{{Equipo}}</td>
+      <td>{{Puntos}}</td>
+      <td>{{GF}}</td>
+      <td>{{GC}}</td>
+      <td>{{DFG}}</td>
+       <td>{{PJ}}</td>
+
+    </tr>
+  {{/each}}
+    
+  </tbody>
+</table>
+
+
+
+
+
+</div>
