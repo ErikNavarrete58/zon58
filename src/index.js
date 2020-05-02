@@ -95,7 +95,10 @@ app.post("/login", passport.authenticate("local",{
 
 /// loguin de administrador 
 
-
+app.get('/logout', (req, res) => {
+  req.logOut();
+res.redirect('/login')
+});
 
 /// instalacion e iniciacion del modulo exprees para crear servidor
 app.listen(3000, function () {

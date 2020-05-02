@@ -16,7 +16,7 @@ router.use(function timeLog (req, res, next) {
 
 
 ///Ruta de formulario resultados de equipos
-router.get('/add', async (req, res) => {
+router.get('/add',isLoggenIn, async (req, res) => {
 const opciones = await pool.query("SELECT * FROM `registros global equipo heroes`");
 console.log(opciones)
     res.render('links/add' , {opciones : opciones} )
