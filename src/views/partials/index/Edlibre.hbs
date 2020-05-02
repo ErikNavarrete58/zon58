@@ -1,0 +1,37 @@
+
+
+
+<table class="table table-sm">
+  <thead>
+    <tr>
+      <th scope="col">Esc</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Puntos</th>
+      <th scope="col">GF</th>
+      <th scope="col">GC</th>
+      <th scope="col">DFG</th>
+      <th scope="col">PJ</th>
+
+    </tr>
+  </thead>
+  <tbody>
+      
+      
+      
+
+      {{#each vistas}}
+      
+    <tr>
+      <td><img src="{{Escudo}}" class="img-fluid" width="20px" height="20px"></img></td>
+      <td>{{Equipo}}</td>
+      <td>{{Puntos}}</td>
+      <td>{{GF}}</td>
+      <td>{{GC}}</td>
+      <td>{{DFG}}</td>
+       <td>{{PJ}}</td>
+
+    </tr>
+  {{/each}}
+    
+  </tbody>
+</table>
