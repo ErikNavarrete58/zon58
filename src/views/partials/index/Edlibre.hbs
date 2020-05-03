@@ -1,11 +1,11 @@
 
 
-
 <div class="container p-4 mx-auto">
 
 <table class="table table-sm table-striped table-bordered table-hover">
   <thead class="table-success">
     <tr align="center">
+
       <th scope="col">Escudo</th>
       <th scope="col">Nombre</th>
       <th scope="col">Puntos</th>
@@ -38,19 +38,74 @@
   </tbody>
 </table>
 
+</div>
 
 <div class="container p-4 mx-auto">
 
 <table class="table table-sm table-striped table-bordered table-hover">
   <thead class="table-success">
     <tr align="center">
-      <th scope="col">Escudo</th>
+
+      <th scope="col">Equipo</th>
+       <th scope="col">Foto</th>
+
+      <th scope="col">Goles</th>
       <th scope="col">Nombre</th>
+      <th scope="col">id</th>
+      <th scope="col">Equipo</th>
+      <th scope="col">Dorsal</th>
+      <th scope="col">Torneo</th>
+
+    </tr>
+  </thead>
+  <tbody>
+      
+      
+      
+
+      {{#each goles}}
+      
+    <tr align="center">
+      <td><img src="{{Escudo}}" width="40px" height="40px" class="img-thumbnail"></img></td>
+      <td><img src="{{Foto}}" width="40px" height="40px" class="img-thumbnail"></img></td>
+
+      <td>{{G}}</td>
+      <td>{{Nombres}}</td>
+      <td> {{ID}} </td>
+      <td>{{Nombre_Equipo}}</td>
+      <td>{{Dorsal}}</td>
+      <td>{{id_torneo}}</td>
+
+    </tr>
+  {{/each}}
+    
+  </tbody>
+</table>
+
+</div>
+
+
+
+
+
+
+<div class="container p-1 mx-auto">
+
+<table class="table table-sm table-striped table-bordered table-hover">
+  <thead class="table-success">
+    <tr align="center">
+      <th scope="col">J</th>
+      <th scope="col">Esc</th>
+      <th scope="col">Equipo</th>
       <th scope="col">GF</th>
       <th scope="col">GC</th>
       <th scope="col">Rival</th>
-      <th scope="col">Nombre R.</th>
-      <th scope="col">PT</th>
+            <th scope="col">Escudo R.</th>
+
+            <th scope="col">Pts</th>
+
+      <th scope="col">Fecha</th>
+      <th scope="col">Hora</th>
 
     </tr>
   </thead>
@@ -62,13 +117,19 @@
       {{#each j1}}
       
     <tr align="center">
-      <td><img src="{{Escudo}}" width="40px" height="40px" class="img-thumbnail"></img></td>
-      <td>{{Equipo}}</td>
-      <td>{{Puntos}}</td>
+      <td>{{Jornada}}</td>
+
+      <td><img src="{{EscLocal}}" width="40px" height="40px" class="img-thumbnail"></img></td>
+      <td>{{Equilocal}}</td>
       <td>{{GF}}</td>
       <td>{{GC}}</td>
-      <td>{{DFG}}</td>
-       <td>{{PJ}}</td>
+      <td>{{Nombre_Equipo}}</td>
+            <td><img src="{{Escudo}}" width="40px" height="40px" class="img-thumbnail"></img></td>
+
+            <td>{{Puntos}}</td>
+
+      <td>{{Fecha}}</td>
+      <td>{{hora}}</td>
 
     </tr>
   {{/each}}

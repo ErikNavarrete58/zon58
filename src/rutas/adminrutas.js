@@ -80,7 +80,7 @@ res.redirect('./vista')
 
 ///Ruta de visualizacion de resultados
 router.get('/vista',isLoggenIn, async  (req, res) => {
-    const vistas = await pool.query("SELECT * FROM `pruebamixto20` ORDER BY `ID` DESC");
+    const vistas = await pool.query("SELECT * FROM `jor_mx_ed_20` ORDER BY `jor_mx_ed_20`.`ID` DESC");
      res.render('links/vistas', { vistas } )
     });
 ///Ruta de visualizacion de resultados
