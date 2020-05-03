@@ -46,7 +46,8 @@ router.get('/Edfemenil', async (req, res) => {
     const vistas = await pool.query("SELECT * FROM `tablageneral_mix_ed_20a`");
     const j1 = await pool.query("SELECT * FROM `jor_mx_ed_20` ORDER BY `jor_mx_ed_20`.`Jornada` DESC");
     const goles = await pool.query("SELECT * FROM `golsim_ed_fem_20` LIMIT 10");
-    res.render('partials/index/edlibre' , { vistas , j1 , goles })
+    const equipos = await pool.query("SELECT * FROM `jor_mx_ed_20` ORDER BY `jor_mx_ed_20`.`Equilocal` ASC , `jor_mx_ed_20`.`Jornada` DESC");
+    res.render('partials/index/edlibre' , { vistas , j1 , goles , equipos })
    })
 
 

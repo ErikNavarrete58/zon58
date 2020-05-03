@@ -1,9 +1,23 @@
 
+<div class="container p-4 mx-auto">
+    <a href="#tablageneral" class="btn btn-success">Tabla General</a>
+
+<a href="#tablagoleo" class="btn btn-success">Tabla Goleo</a>
+<a href="#resuljornada" class="btn btn-success">Resultados por Jornada</a>
+<a href="#resulequipos" class="btn btn-success">Resultados por Equipos</a>
+
+
+</div>
+
+<a name="tablageneral"></a>
 
 <div class="container p-4 mx-auto">
 
 <table class="table table-sm table-striped table-bordered table-hover">
-  <thead class="table-success">
+<h3>
+  <small class="text-muted">Tabla General</small>
+</h3> 
+ <thead class="table-success">
     <tr align="center">
 
       <th scope="col">Escudo</th>
@@ -40,9 +54,27 @@
 
 </div>
 
+<a name="tablagoleo"></a>
+
+<div class="container p-4 mx-auto">
+    <a href="#tablageneral" class="btn btn-success">Tabla General</a>
+
+<a href="#tablagoleo" class="btn btn-success">Tabla Goleo</a>
+<a href="#resuljornada" class="btn btn-success">Resultados por Jornada</a>
+<a href="#resulequipos" class="btn btn-success">Resultados por Equipos</a>
+
+
+</div>
+
+
 <div class="container p-4 mx-auto">
 
 <table class="table table-sm table-striped table-bordered table-hover">
+
+<h3>
+  <small class="text-muted">Tabla de Goleo</small>
+</h3> 
+
   <thead class="table-success">
     <tr align="center">
 
@@ -87,11 +119,25 @@
 
 
 
+<a name="resuljornada"></a>
+<div class="container p-4 mx-auto">
+    <a href="#tablageneral" class="btn btn-success">Tabla General</a>
+
+<a href="#tablagoleo" class="btn btn-success">Tabla Goleo</a>
+<a href="#resuljornada" class="btn btn-success">Resultados por Jornada</a>
+<a href="#resulequipos" class="btn btn-success">Resultados por Equipos</a>
+
+
+</div>
+
 
 
 <div class="container p-1 mx-auto">
 
 <table class="table table-sm table-striped table-bordered table-hover">
+    <h3>
+  <small class="text-muted">Tabla de Resultados por Jornada</small>
+</h3>
   <thead class="table-success">
     <tr align="center">
       <th scope="col">J</th>
@@ -139,6 +185,81 @@
 
 
 
+<a name="resulequipos"></a>
+<div class="container p-4 mx-auto">
+    <a href="#tablageneral" class="btn btn-success">Tabla General</a>
+
+<a href="#tablagoleo" class="btn btn-success">Tabla Goleo</a>
+<a href="#resuljornada" class="btn btn-success">Resultados por Jornada</a>
+<a href="#resulequipos" class="btn btn-success">Resultados por Equipos</a>
+
+
+</div>
+
+
+
+</div>
+
+
+<div class="container p-1 mx-auto">
+
+<table class="table table-sm table-striped table-bordered table-hover">
+    <h3>
+  <small class="text-muted">Tabla de Resultados agrupados por equipo</small>
+</h3>
+  <thead class="table-success">
+    <tr align="center">
+      <th scope="col">J</th>
+      <th scope="col">Esc</th>
+      <th scope="col">Equipo</th>
+      <th scope="col">GF</th>
+      <th scope="col">GC</th>
+      <th scope="col">Rival</th>
+            <th scope="col">Escudo R.</th>
+
+            <th scope="col">Pts</th>
+
+      <th scope="col">Fecha</th>
+      <th scope="col">Hora</th>
+
+    </tr>
+  </thead>
+  <tbody>
+      
+      
+      
+
+      {{#each equipos}}
+      
+    <tr align="center">
+      <td>{{Jornada}}</td>
+
+      <td><img src="{{EscLocal}}" width="40px" height="40px" class="img-thumbnail"></img></td>
+      <td>{{Equilocal}}</td>
+      <td>{{GF}}</td>
+      <td>{{GC}}</td>
+      <td>{{Nombre_Equipo}}</td>
+            <td><img src="{{Escudo}}" width="40px" height="40px" class="img-thumbnail"></img></td>
+
+            <td>{{Puntos}}</td>
+
+      <td>{{Fecha}}</td>
+      <td>{{hora}}</td>
+
+    </tr>
+  {{/each}}
+    
+  </tbody>
+</table>
+
+</div>
+
+<div class="container p-4 mx-auto">
+    <a href="#tablageneral" class="btn btn-success">Tabla General / Inicio</a>
+
+<a href="#tablagoleo" class="btn btn-success">Tabla Goleo</a>
+<a href="#resuljornada" class="btn btn-success">Resultados por Jornada</a>
+<a href="#resulequipos" class="btn btn-success">Resultados por Equipos</a>
 
 
 </div>
