@@ -133,9 +133,139 @@ res.redirect('/admin/vista' )
 
         });
 
+/// editar goles liga ed
+
+router.get('/goles', async  (req, res) => {
+    const opciones = await pool.query("SELECT * FROM `registros global equipo heroes`");
+    const jugadores = await pool.query("SELECT * FROM `registro global heroes`");
+    const mixtagol = await pool.query("SELECT * FROM `goleo_feme_20_ed` WHERE 1 GROUP by `id` ORDER BY `goleo_feme_20_ed`.`Equipo` ASC");
+    const mixtagolind = await pool.query("SELECT * FROM `goleo_feme_20_ed` ORDER BY `goleo_feme_20_ed`.`id_registro` DESC");
+
+    res.render('links/goleo' ,{ opciones , jugadores , mixtagol,mixtagolind})
+    });
+
+    router.post('/goles', async  (req, res) => {
+       console.log
+       const {Jornada,Fecha,Hora,Equipo1,Rival,idl,idv,nam1,namv,dor1,dorv,gl,gv,id2,idv2,nam2,namv2,dor2,dorv2,gl2,gv2,idl3,idv3,naml3,namv3,dor3,dorv3,gl3,gv3} = req.body;
+       const Regisedit = {
+        id :idl,
+        nombre :nam1,
+        Dorsal:dor1,
+        Equipo: Equipo1,
+        Goles: gl,
+        Jornada,
+        Rival,
+       Fecha,
+       Hora
+    };
+    const Regiseditv = {
+        id :idv,
+        nombre :namv,
+        Dorsal:dorv,
+        Equipo: Rival,
+        Goles: gv,
+        Jornada,
+        Rival:Equipo1,
+       Fecha,
+       Hora
+    };
+
+    const Regisedit2 = {
+        id :id2,
+        nombre :nam2,
+        Dorsal:dor2,
+        Equipo: Equipo1,
+        Goles: gl2,
+        Jornada,
+        Rival,
+       Fecha,
+       Hora
+    };
+    const Regiseditv2 = {
+        id :idv2,
+        nombre :namv2,
+        Dorsal:dorv2,
+        Equipo: Rival,
+        Goles: gv2,
+        Jornada,
+        Rival:Equipo1,
+       Fecha,
+       Hora
+    };
+    const Regisedit3 = {
+        id :idl3,
+        nombre :naml3,
+        Dorsal:dor3,
+        Equipo: Equipo1,
+        Goles: gl3,
+        Jornada,
+        Rival,
+       Fecha,
+       Hora
+    };
+    const Regiseditv3 = {
+        id :idv3,
+        nombre :namv3,
+        Dorsal:dorv3,
+        Equipo: Rival,
+        Goles: gv3,
+        Jornada,
+        Rival:Equipo1,
+       Fecha,
+       Hora
+    };
+
+    console.log(Regisedit)
+    await pool.query("INSERT INTO `goleo_feme_20_ed` set ?",[Regisedit])
+    await pool.query("INSERT INTO `goleo_feme_20_ed` set ?",[Regisedit2])
+    await pool.query("INSERT INTO `goleo_feme_20_ed` set ?",[Regisedit3])
+
+    await pool.query("INSERT INTO `goleo_feme_20_ed` set ?",[Regiseditv])
+    await pool.query("INSERT INTO `goleo_feme_20_ed` set ?",[Regiseditv2])
+    await pool.query("INSERT INTO `goleo_feme_20_ed` set ?",[Regisedit3])
+
+       res.redirect('/admin/goles' )
+    });
+
+    router.get('/borrargoleadores/:ID', async  (req, res) => {
+        const {ID} = req.params;
+        console.log(ID);
+ await pool.query("Delete From `goleo_feme_20_ed` WHERE id_registro = ?" , [ID])
+        res.redirect('/admin/goles' )
+            });
+
+     router.get('/editgoleadores/:ID', async  (req, res) => {
+         const {ID} = req.params;
+            console.log(ID)
+ const ediciones = await pool.query("Select * From `goleo_feme_20_ed` WHERE id_registro = ?" , [ID])
+
+     res.render('links/editgoleadores', {ediciones})
+                });
 
 
+                router.post('/ediciongoleadores/:ID', async  (req, res) => {
+                    const {ID} = req.params;
 
+                    const {Jornada,Fecha,hora,id,nombre,Equipo,Dorsal,Rival,Goles,id_registro} = req.body;
+
+                    const editgol1 = {
+                        Jornada ,
+                        Fecha  ,
+                        hora,
+                        id,
+                        nombre,
+                        Equipo,
+                        Dorsal,
+                        Rival,
+                        Goles
+    
+                    };
+
+                    console.log(ID)
+                    await pool.query("UPDATE `goleo_feme_20_ed` set ? Where id_registro = ?",[editgol1,ID]);
+
+                  res.redirect('/admin/goles' )
+                           });
 
 
 module.exports = router
