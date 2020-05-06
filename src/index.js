@@ -10,6 +10,8 @@ const pool = require('./database');
 //enrutadores
 var adminrt = require('./rutas/adminrutas')
 var pag = require('./rutas/pag')
+var ligasid = require('./rutas/ligasId')
+
 //fin enrutadores
 const morgan = require('morgan')
 const exhbs = require('express-handlebars')
@@ -74,7 +76,9 @@ app.use((req, res , next) => {
 
 ///enrutadores
 app.use('/admin', adminrt);
-app.use(pag);
+app.use(pag); //ruta vistas ligaed
+app.use(ligasid); //ruta futbol, vistas id de jugadores , equipos , dt
+
 ///enrutadores
 
 ///carpeta public

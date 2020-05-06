@@ -7,8 +7,19 @@ router.use(function timeLog (req, res, next) {
     console.log('Time: ', Date.now())
     next()
 })
-// define la ruta de la página principal
+
+
+
+// define la ruta de la página principal de futbol
 router.get('/', function (req, res) {
+    res.render('partials/index/principal')
+})
+// define la ruta de la página principal
+
+
+
+// define la ruta de la página principal de futbol
+router.get('/Futbol', function (req, res) {
     res.render('partials/index/index')
 })
 // define la ruta de la página principal
