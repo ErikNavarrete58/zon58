@@ -33,5 +33,29 @@ res.render('ligasld/idbuscar',{idbuscar})
 })
 
 
+router.get('/idequipo', function (req, res) {
+    res.render('ligasld/idequipo')
+})
+
+router.post('/idequipo', async (req, res) => {
+    const {id} = req.body;
+
+    console.log(id)
+const registro = await pool.query("Select * From `registros global equipo heroes` WHERE Id_plantel = ?" , [id])
+const logrosequipos = await pool.query("Select * From `historial_campeones` WHERE Id_plantel = ?" , [id])
+
+res.render('ligasld/idlogrosequipo',{registro,logrosequipos},)
+})
+
+router.post('/idbuscarequipos', async (req, res) => {
+    const {id} = req.body;
+const idp = "%"+ id + "%";
+    console.log(idp)
+const idbuscar = await pool.query("SELECT * FROM `registros global equipo heroes` WHERE `Nombre_Equipo` LIKE ?" , [idp])
+console.log(idbuscar)
+res.render('ligasld/idbuscarequipos',{idbuscar})
+})
+
+
 
 module.exports = router

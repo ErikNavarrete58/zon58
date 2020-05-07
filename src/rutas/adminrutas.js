@@ -268,4 +268,103 @@ router.get('/goles', async  (req, res) => {
                            });
 
 
+router.get('/equipo', async  (req, res) => {
+const ediciones = await pool.query("SELECT * FROM `registros global equipo heroes` ORDER BY `registros global equipo heroes`.`id_plantel` DESC")
+console.log(ediciones)
+    res.render('links/equipo',{ediciones})
+    });
+
+    router.post('/equipo', async  (req, res) => {
+ const {Nombre, Delegado,id} = req.body;
+ const equip = {
+    Nombre_Equipo : Nombre  ,
+    Delegado: Delegado  ,
+     id_plantel : id
+};
+console.log(equip)
+await pool.query("INSERT INTO `registros global equipo heroes` set ?",[equip])
+
+            res.redirect('/admin/equipo')
+
+            });
+
+  router.get('/editarequipos/:ID', async  (req, res) => {
+    const {ID} = req.params;
+
+const ediciones = await pool.query("Select * From `registros global equipo heroes` WHERE id_plantel = ?",[ID])
+console.log(ediciones)
+        res.render('ligasld/editarequipo',{ediciones})
+            });
+
+      router.post('/editarplantel/:ID', async  (req, res) => {
+                const {Nombre, Delegado,id,Escudo,Fecha_Registro} = req.body;
+                const ID = id;
+
+                const equip = {
+                   Nombre_Equipo : Nombre  ,
+                   Delegado,
+                   Escudo,
+                   Fecha_Registro,
+                id_plantel:id
+    
+               };
+
+              
+               console.log(equip)
+               console.log(ID)
+await pool.query("UPDATE `registros global equipo heroes` set ? Where id_plantel = ?",[equip,ID]);
+               
+                           res.redirect('/admin/equipo')
+               
+                           });
+
+  router.get('/jugadores', async  (req, res) => {
+const ediciones = await pool.query("SELECT * FROM `registro global heroes` ORDER BY `registro global heroes`.`ID_FB` DESC")
+console.log(ediciones)
+    res.render('links/jugadores',{ediciones})
+    });
+
+    router.post('/jugador', async  (req, res) => {
+        const {Nombre,id} = req.body;
+        const equip = {
+           Nombres : Nombre  ,
+            ID_FB : id
+       };
+       console.log(equip)
+       await pool.query("INSERT INTO `registro global heroes` set ?",[equip])
+       
+                   res.redirect('/admin/jugadores')
+       
+                   });
+
+ router.get('/editarjugadores/:ID', async  (req, res) => {
+    const {ID} = req.params;
+
+const ediciones = await pool.query("Select * From `registro global heroes` WHERE ID_FB = ?",[ID])
+console.log(ediciones)
+        res.render('ligasld/editarjugador',{ediciones})
+            });
+
+
+   router.post('/editarjugador/:ID', async  (req, res) => {
+                const {Nombres, Curp,ID_FB,FOTO} = req.body;
+                const ID = ID_FB;
+
+                const equip = {
+                   Nombres  ,
+                   Curp,
+                   ID_FB,
+                   FOTO,    
+               };
+
+              
+               console.log(equip)
+               console.log(ID)
+await pool.query("UPDATE `registro global heroes` set ? Where ID_FB = ?",[equip,ID]);
+               
+                           res.redirect('/admin/jugadores')
+               
+                           });
+
+            
 module.exports = router
