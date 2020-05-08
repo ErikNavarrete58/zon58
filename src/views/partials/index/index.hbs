@@ -1,134 +1,214 @@
 <style type="text/css">
-.yoimagen{
-    margin-top: -150px;
+.card {
+  display: block;
+    margin-bottom: 20px;
+    line-height: 1.42857143;
+    background-color: #fff;
+    border-radius: 2px;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+    transition: box-shadow .25s;
 }
-
-.yokids{
-    margin-top: -90px;
+.card:hover {
+  box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
 }
-a {
-  color: black;
+.img-card {
+  width: 100%;
+  height:200px;
+  border-top-left-radius:2px;
+  border-top-right-radius:2px;
+  display:block;
+    overflow: hidden;
+}
+.img-card img{
+  width: 100%;
+  height: 200px;
+  object-fit:cover;
+  transition: all .25s ease;
+}
+.card-content {
+  padding:15px;
+  text-align:left;
+}
+.card-title {
+  margin-top:0px;
+  font-weight: 700;
+  font-size: 1.65em;
+}
+.card-title a {
+  color: #000;
+  text-decoration: none !important;
+}
+.card-read-more {
+  border-top: 1px solid #D4D4D4;
+}
+.card-read-more a {
+  text-decoration: none !important;
+  padding:10px;
+  font-weight:600;
+  text-transform: uppercase
+}
 }
 
 </style>
 
-<div class="container m-4 p-4">
 
-<div class="card-deck">
-    <a href="/ligaed">
-  <div class="card bg-light mb-3 text-center">
-    <img class="card-img-top img-fluid img-thumbnail" src="/img/campeonpasado.jpg" alt="Card image cap">
-    <div class="text-center">
-         <img src="/img/ligaed.png" alt="" class="img-fluid yoimagen  img-thumbnail" width="100px" height="100px"> </div>
-    <div class="card-body">
-      <h5 class="card-title">Liga ED</h5>
-      <p class="card-text">
-Heroes Tecamac Cedros <br />
-          Futbol Rapido<br />
-        
-          </div>
-      <p class="card-footer">
-          <small class="text-muted">
-<a href="#"><img class="img-fluid" src="/img/face.png" width="40px" height="40px" ><img> Visitanos</a>
-              </small></p>
-    
-  </div>
-  </a>
-   <div class="card bg-light mb-3 text-center">
-    <img class="card-img-top img-fluid img-thumbnail" src="/img/kidsportada.jpg" alt="Card image cap">
-    <div class="text-center">
-         <img src="/img/championskids.png" alt="" class="img-fluid yokids  img-thumbnail" width="100px" height="100px"> </div>
-    <div class="card-body">
-      <h5 class="card-title">Champiosn Kids</h5>
-      <p class="card-text">
-Heroes Tecamac Cedros <br />
-          Futbol Rapido<br />
-          Checa todas tus estadisticas dando click
-          a esta tarjeta <br />
-          </div>
-      <p class="card-footer">
-          <small class="text-muted">
-<a href="#"><img class="img-fluid" src="/img/face.png" width="40px" height="40px"><img> Visitanos</a>
-              </small></p>
-    
-  </div>
-  <div class="card bg-light mb-3 text-center">
-    <img class="card-img-top img-fluid img-thumbnail" src="/img/portadafb.jpg" alt="Card image cap">
-    <div class="text-center">
-         <img src="/img/FB.png" alt="" class="img-fluid yokids  " width="100px" height="60px"> </div>
-    <div class="card-body">
-      <h5 class="card-title">Copa FB</h5>
-      <p class="card-text">
-Heroes Tecamac Cedros <br />
-          Futbol Rapido<br />
-          Checa todas tus estadisticas dando click
-          a esta tarjeta <br />
-          </div>
-      <p class="card-footer">
-          <small class="text-muted">
-<a href="#"><img class="img-fluid" src="/img/face.png" width="40px" height="40px"><img> Visitanos</a>
-              </small></p>
-    
-  </div>
+
+<div class="container-fluid">
+  
+	<!--clasificacion de filas-->
+
+  <div class="row mx-auto mt-3">
+
+        <div class="col-md-4">
+            <div class="card">
+                <a class="img-card img-fluid" href="/ligaed">
+                    <img src="/img/campeoned.jpg" />
+                </a>
+                <br />
+                <div class="card-content">
+                    <h4 class="card-title">
+                        <a href="/ligaed">
+                Liga ED                 
+                 </a>
+                    </h4>
+                    <div class="">
+Categorias , Estadisticas , Registro de equipos..
+                    </div>
+                </div>
+                <div class="card-read-more">
+                    <a class="btn btn-link btn-block" href="/ligaed">
+Leer mas...                    </a>
+                </div>
+            </div>
 </div>
 
-</div>
-
-<div class="container mt-3">
-
-<div class="card-deck">
-    <a href="/ligaed">
-  <div class="card bg-light mb-3 text-center">
-    <img class="card-img-top img-fluid" src="/img/campeonpasado.jpg" alt="Card image cap">
-    <div class="text-center">
-         <img src="/img/ligaed.png" alt="" class="img-fluid yoimagen  img-thumbnail" width="100px" height="100px"> </div>
-    <div class="card-body">
-      <h5 class="card-title">Liga ED</h5>
-      <p class="card-text">
-Conoce todos nuestros torneo <br />
-          Libre Dominical <br />
-          Libre Dominical <br />
-      <p class="card-text">
-          <small class="text-muted">
-<a href="#"><img class="img-fluid" src="/img/face.png" width="40px" height="40px"><img> Visitanos</a>
-              </small></p>
+        <div class="col-md-4">
+            <div class="card">
+                <a class="img-card" href="/kids">
+                    <img src="/img/portadakids.png" />
+                </a>
+                <br />
+                <div class="card-content">
+                    <h4 class="card-title">
+                        <a href="/kids">
+Champions Kids                        </a>
+                    </h4>
+                    <div class="">
+Sub-18 , Libre , Grandes premiaciones
+                    </div>
+                </div>
+                <div class="card-read-more">
+                    <a class="btn btn-link btn-block" href="/kids">
+Leer mas...                     </a>
+                </div>
+        </div>
     </div>
-  </div>
-  </a>
-   <div class="card bg-light mb-3 text-center">
-    <img class="card-img-top img-fluid" src="/img/campeonpasado.jpg" alt="Card image cap">
-    <div class="text-center">
-         <img src="/img/ligaed.png" alt="" class="img-fluid yoimagen  img-thumbnail" width="100px" height="100px"> </div>
-    <div class="card-body">
-      <h5 class="card-title">Liga ED</h5>
-      <p class="card-text">
-Conoce todos nuestros torneo <br />
-          Libre Dominical <br />
-          Libre Dominical <br />
-      <p class="card-text">
-          <small class="text-muted">
-<a href="#"><img class="img-fluid" src="/img/face.png" width="40px" height="40px"><img> Visitanos</a>
-              </small></p>
+
+        <div class="col-md-4">
+            <div class="card">
+                <a class="img-card" href="/copafb">
+                    <img src="/img/portadafb.jpg" />
+                </a>
+                <br />
+                <div class="card-content">
+                    <h4 class="card-title">
+Copa FB                    </h4>
+                    <div class="">
+                      Torneos cortos , arbitrajes accesibles...
+
+     </div>
+                </div>
+                <div class="card-read-more">
+                    <a class="btn btn-link btn-block" href="/copafb">
+Leer mas...                     </a>
+                </div>
+            </div>
     </div>
-  </div>
-  <div class="card bg-light mb-3 text-center">
-    <img class="card-img-top img-fluid" src="/img/campeonpasado.jpg" alt="Card image cap">
-    <div class="text-center">
-         <img src="/img/ligaed.png" alt="" class="img-fluid yoimagen  img-thumbnail" width="100px" height="100px"> </div>
-    <div class="card-body">
-      <h5 class="card-title">Liga ED</h5>
-      <p class="card-text">
-Conoce todos nuestros torneo <br />
-          Libre Dominical <br />
-          Libre Dominical <br />
-      <p class="card-text">
-          <small class="text-muted">
-<a href="#"><img class="img-fluid" src="/img/face.png" width="40px" height="40px"><img> Visitanos</a>
-              </small></p>
-    </div>
-  </div>
+
+</div>
+
+
 </div>
 
 </div>
 
+
+<div class="container-fluid">
+  
+	<!--clasificacion de filas-->
+
+  <div class="row mx-auto mt-0">
+
+        <div class="col-md-4">
+            <div class="card">
+                <a class="img-card img-fluid" href="/id">
+                    <img src="/img/registroid.jpg" />
+                </a>
+                <br />
+                <div class="card-content">
+                    <h4 class="card-title">
+                        <a href="/id">
+Registros
+                        </a>
+                    </h4>
+                    <div class="">
+Registro y estadisticas Personales
+                    </div>
+                </div>
+                <div class="card-read-more">
+                    <a class="btn btn-link btn-block" href="/id">
+Leer mas...                    </a>
+                </div>
+            </div>
+</div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <a class="img-card" href="/idequipo">
+                    <img src="/img/trofeo.jpg" />
+                </a>
+                <br />
+                <div class="card-content">
+                    <h4 class="card-title">
+                        <a href="http://www.fostrap.com/">
+Estadisticas por equipo
+                        </a>
+                    </h4>
+                    <div class="">
+Mira todos los logros de tu actual equipo
+                    </div>
+                </div>
+                <div class="card-read-more">
+                    <a class="btn btn-link btn-block" href="/idequipo">
+Leer mas...                     </a>
+                </div>
+        </div>
+    </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <a class="img-card" href="">
+                    <img src="" />
+                </a>
+                <br />
+                <div class="card-content">
+                    <h4 class="card-title">
+                        <a href="http://www.fostrap.com/">
+Mejores de La liga                    </h4>
+                    <div class="">
+enconstruccion   </div>
+                </div>
+                <div class="card-read-more">
+                    <a class="btn btn-link btn-block" href="http://www.fostrap.com/">
+Leer mas...                     </a>
+                </div>
+            </div>
+    </div>
+
+</div>
+
+
+</div>
+
+</div>
 
