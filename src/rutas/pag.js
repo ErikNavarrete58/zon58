@@ -36,7 +36,7 @@ router.get('/ligaed', function (req, res) {
 router.get('/Edmixto', async (req, res) => {
 
  const vistas = await pool.query("SELECT * FROM `tablageneral_mix_ed_20a`");
- const j1 = await pool.query("SELECT * FROM `jor_mx_ed_20` ORDER BY `jor_mx_ed_20`.`Jornada` DESC");
+ const j1 = await pool.query("SELECT * FROM `jor_ed_mix_a20` ORDER BY `jor_ed_mix_a20`.`Jornada` DESC");
 
  res.render('partials/index/edlibre' , { vistas , j1 },)
 })
@@ -46,36 +46,38 @@ router.get('/Edmixto', async (req, res) => {
 router.get('/Edlibre', async (req, res) => {
 
     const vistas = await pool.query("SELECT * FROM `tablageneral_mix_ed_20a`");
-    const j1 = await pool.query("SELECT * FROM `jor_mx_ed_20` ORDER BY `jor_mx_ed_20`.`Jornada` DESC");
-   
-    res.render('partials/index/edlibre' , { vistas , j1 },)
+    const j1 = await pool.query("SELECT * FROM `jor_ed_mix_a20` ORDER BY `jor_ed_mix_a20`.`Jornada` DESC");
+    const equipos = await pool.query("SELECT * FROM `jor_ed_mix_a20` ORDER BY `jor_ed_mix_a20`.`Equipolc` DESC");
+
+    res.render('partials/index/edlibre' , { vistas , j1 ,equipos},)
    })
 
    // ruta libre ed femenil
 router.get('/Edfemenil', async (req, res) => {
 
     const vistas = await pool.query("SELECT * FROM `tablageneral_mix_ed_20a`");
-    const j1 = await pool.query("SELECT * FROM `jor_mx_ed_20` ORDER BY `jor_mx_ed_20`.`Jornada` DESC");
-    const goles = await pool.query("SELECT * FROM `golsim_ed_fem_20` LIMIT 10");
-    const equipos = await pool.query("SELECT * FROM `jor_mx_ed_20` ORDER BY `jor_mx_ed_20`.`Equilocal` ASC , `jor_mx_ed_20`.`Jornada` DESC");
-    res.render('partials/index/edlibre' , { vistas , j1 , goles , equipos })
+    const j1 = await pool.query("SELECT * FROM `jor_ed_mix_a20` ORDER BY `jor_ed_mix_a20`.`Jornada` DESC");
+    const equipos = await pool.query("SELECT * FROM `jor_ed_mix_a20` ORDER BY `jor_ed_mix_a20`.`Equipolc` DESC");
+    const goles = await pool.query("SELECT * FROM `ed_tablagoleo_fm_a20` LIMIT 10");
+    console.log(goles);
+    res.render('partials/index/edlibre' , { vistas , j1 ,goles, equipos })
    })
 
    router.get('/Edsub20', async (req, res) => {
 
     const vistas = await pool.query("SELECT * FROM `tablageneral_mix_ed_20a`");
-    const j1 = await pool.query("SELECT * FROM `jor_mx_ed_20` ORDER BY `jor_mx_ed_20`.`Jornada` DESC");
-    const goles = await pool.query("SELECT * FROM `golsim_ed_fem_20` LIMIT 10");
-    const equipos = await pool.query("SELECT * FROM `jor_mx_ed_20` ORDER BY `jor_mx_ed_20`.`Equilocal` ASC , `jor_mx_ed_20`.`Jornada` DESC");
+    const j1 = await pool.query("SELECT * FROM `jor_ed_mix_a20` ORDER BY `jor_ed_mix_a20`.`Jornada` DESC");
+    const goles = await pool.query("SELECT * FROM `ed_tablagoleo_fm_a20` LIMIT 10");
+    const equipos = await pool.query("SELECT * FROM `jor_ed_mix_a20` ORDER BY `jor_ed_mix_a20`.`Equipolc` ASC , `jor_mx_ed_20`.`Jornada` DESC");
     res.render('partials/index/edlibre' , { vistas , j1 , goles , equipos })
    })
 
    router.get('/Edsub23', async (req, res) => {
 
     const vistas = await pool.query("SELECT * FROM `tablageneral_mix_ed_20a`");
-    const j1 = await pool.query("SELECT * FROM `jor_mx_ed_20` ORDER BY `jor_mx_ed_20`.`Jornada` DESC");
-    const goles = await pool.query("SELECT * FROM `golsim_ed_fem_20` LIMIT 10");
-    const equipos = await pool.query("SELECT * FROM `jor_mx_ed_20` ORDER BY `jor_mx_ed_20`.`Equilocal` ASC , `jor_mx_ed_20`.`Jornada` DESC");
+    const j1 = await pool.query("SELECT * FROM `jor_ed_mix_a20` ORDER BY `jor_ed_mix_a20`.`Jornada` DESC");
+    const goles = await pool.query("SELECT * FROM `ed_tablagoleo_fm_a20` LIMIT 10");
+    const equipos = await pool.query("SELECT * FROM `jor_ed_mix_a20` ORDER BY `jor_ed_mix_a20`.`Equipolc` ASC , `jor_mx_ed_20`.`Jornada` DESC");
     res.render('partials/index/edlibre' , { vistas , j1 , goles , equipos })
    })
 

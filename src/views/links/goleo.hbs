@@ -22,7 +22,7 @@
          </div>
          <div class="col">
                <div class="form-group">
-               <input type="text" value="" name="Fecha" class="form-control" placeholder="Fecha">
+               <input type="date" value="" name="Fecha" class="form-control" placeholder="Fecha">
               </div>
 
 
@@ -276,9 +276,9 @@
   <tbody>
        {{#each mixtagol}}
     <tr>
-      <th scope="col">{{Equipo}}</th>
-     <th scope="col">{{id}}</th>
-      <th scope="col">{{nombre}}</th>
+      <th scope="col">{{Nombre_Equipo}}</th>
+     <th scope="col">{{ID_FB}}</th>
+      <th scope="col">{{Nombres}}</th>
       <th scope="col">{{Dorsal}}</th>
 
     </tr>
@@ -316,14 +316,14 @@
   <tbody>
        {{#each mixtagolind}}
     <tr>
-      <th scope="col">{{Equipo}}</th>
-     <th scope="col">{{id}}</th>
-      <th scope="col">{{nombre}}</th>
+      <th scope="col">{{Nombre_Equipo}}</th>
+     <th scope="col">{{ID_FB}}</th>
+      <th scope="col">{{Nombres}}</th>
       <th scope="col">{{Dorsal}}</th>
        <th scope="col">{{Goles}}</th>
        <th scope="col">{{Jornada}}</th>
               <th scope="col">{{Fecha}}</th>
-       <th scope="col">{{Hora}}</th>
+       <th scope="col">{{hora}}</th>
               <th scope="col">
 <a href="editgoleadores/{{id_registro}}" class="btn btn-success">Ed</a>
 <a href="borrargoleadores/{{id_registro}}"class="btn btn-danger">Br</a></th>

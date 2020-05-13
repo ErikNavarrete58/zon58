@@ -17,8 +17,8 @@ router.post('/id', async (req, res) => {
 
     console.log(id)
 const registro = await pool.query("Select * From `Registro Global Heroes` WHERE ID_FB = ?" , [id])
-const premiacion = await pool.query("Select * From `Premiaciones Individuales` WHERE ID_FB = ?" , [id])
-const toractual = await pool.query("Select * From `golsim_ed_fem_20` WHERE ID_FB = ?" , [id])
+const premiacion = await pool.query("Select * From `Premiaciones_Individuales` WHERE ID_FB = ?" , [id])
+const toractual = await pool.query("Select * From `ed_tablagoleo_fm_a20` WHERE ID_FB = ?" , [id])
 
 res.render('ligasld/idlogros',{registro,premiacion, toractual},)
 })
@@ -42,7 +42,7 @@ router.post('/idequipo', async (req, res) => {
 
     console.log(id)
 const registro = await pool.query("Select * From `Registros Global Equipo Heroes` WHERE Id_plantel = ?" , [id])
-const logrosequipos = await pool.query("Select * From `historial_campeones` WHERE Id_plantel = ?" , [id])
+const logrosequipos = await pool.query("Select * From `Historial_Campeones` WHERE Id_plantel = ?" , [id])
 
 res.render('ligasld/idlogrosequipo',{registro,logrosequipos},)
 })

@@ -80,7 +80,7 @@ res.redirect('./vista')
 
 ///Ruta de visualizacion de resultados
 router.get('/vista',isLoggenIn, async  (req, res) => {
-    const vistas = await pool.query("SELECT * FROM `jor_mx_ed_20` ORDER BY `jor_mx_ed_20`.`ID` DESC");
+    const vistas = await pool.query("SELECT * FROM `jor_ed_mix_a20` ORDER BY `jor_ed_mix_a20`.`ID` DESC");
      res.render('links/vistas', { vistas } )
     });
 ///Ruta de visualizacion de resultados
@@ -138,8 +138,8 @@ res.redirect('/admin/vista' )
 router.get('/goles', async  (req, res) => {
     const opciones = await pool.query("SELECT * FROM `Registros Global Equipo Heroes`");
     const jugadores = await pool.query("SELECT * FROM `Registro Global Heroes`");
-    const mixtagol = await pool.query("SELECT * FROM `goleo_feme_20_ed` WHERE 1 GROUP by `id` ORDER BY `goleo_feme_20_ed`.`Equipo` ASC");
-    const mixtagolind = await pool.query("SELECT * FROM `goleo_feme_20_ed` ORDER BY `goleo_feme_20_ed`.`id_registro` DESC");
+    const mixtagol = await pool.query("SELECT * FROM `ed_goleojor_feme_a20` WHERE 1 GROUP by `ID_FB` ORDER BY `ed_goleojor_feme_a20`.`Nombre_Equipo` ASC");
+    const mixtagolind = await pool.query("SELECT * FROM `ed_goleojor_feme_a20` ORDER BY `ed_goleojor_feme_a20`.`id_registro` DESC");
 
     res.render('links/goleo' ,{ opciones , jugadores , mixtagol,mixtagolind})
     });
@@ -216,13 +216,13 @@ router.get('/goles', async  (req, res) => {
     };
 
     console.log(Regisedit)
-    await pool.query("INSERT INTO `goleo_feme_20_ed` set ?",[Regisedit])
-    await pool.query("INSERT INTO `goleo_feme_20_ed` set ?",[Regisedit2])
-    await pool.query("INSERT INTO `goleo_feme_20_ed` set ?",[Regisedit3])
+    await pool.query("INSERT INTO `Goleo_ED_feme_A20` set ?",[Regisedit])
+    await pool.query("INSERT INTO `Goleo_ED_feme_A20` set ?",[Regisedit2])
+    await pool.query("INSERT INTO `Goleo_ED_feme_A20` set ?",[Regisedit3])
 
-    await pool.query("INSERT INTO `goleo_feme_20_ed` set ?",[Regiseditv])
-    await pool.query("INSERT INTO `goleo_feme_20_ed` set ?",[Regiseditv2])
-    await pool.query("INSERT INTO `goleo_feme_20_ed` set ?",[Regisedit3])
+    await pool.query("INSERT INTO `Goleo_ED_feme_A20` set ?",[Regiseditv])
+    await pool.query("INSERT INTO `Goleo_ED_feme_A20` set ?",[Regiseditv2])
+    await pool.query("INSERT INTO `Goleo_ED_feme_A20` set ?",[Regisedit3])
 
        res.redirect('/admin/goles' )
     });
@@ -230,14 +230,14 @@ router.get('/goles', async  (req, res) => {
     router.get('/borrargoleadores/:ID', async  (req, res) => {
         const {ID} = req.params;
         console.log(ID);
- await pool.query("Delete From `goleo_feme_20_ed` WHERE id_registro = ?" , [ID])
+ await pool.query("Delete From `Goleo_ED_feme_A20` WHERE id_registro = ?" , [ID])
         res.redirect('/admin/goles' )
             });
 
      router.get('/editgoleadores/:ID', async  (req, res) => {
          const {ID} = req.params;
             console.log(ID)
- const ediciones = await pool.query("Select * From `goleo_feme_20_ed` WHERE id_registro = ?" , [ID])
+ const ediciones = await pool.query("Select * From `Goleo_ED_feme_A20` WHERE id_registro = ?" , [ID])
 
      res.render('links/editgoleadores', {ediciones})
                 });
@@ -262,14 +262,14 @@ router.get('/goles', async  (req, res) => {
                     };
 
                     console.log(ID)
-                    await pool.query("UPDATE `goleo_feme_20_ed` set ? Where id_registro = ?",[editgol1,ID]);
+                    await pool.query("UPDATE `Goleo_ED_feme_A20` set ? Where id_registro = ?",[editgol1,ID]);
 
                   res.redirect('/admin/goles' )
                            });
 
 
 router.get('/equipo', async  (req, res) => {
-const ediciones = await pool.query("SELECT * FROM `Registros Global Equipo Heroes` ORDER BY `registros global equipo heroes`.`id_plantel` DESC")
+const ediciones = await pool.query("SELECT * FROM `Registros Global Equipo Heroes` ORDER BY `Registros Global Equipo Heroes`.`id_plantel` DESC")
 console.log(ediciones)
     res.render('links/equipo',{ediciones})
     });
@@ -319,7 +319,7 @@ await pool.query("UPDATE `Registros Global Equipo Heroes` set ? Where id_plantel
                            });
 
   router.get('/jugadores', async  (req, res) => {
-const ediciones = await pool.query("SELECT * FROM `Registro Global Heroes` ORDER BY `registro global heroes`.`ID_FB` DESC")
+const ediciones = await pool.query("SELECT * FROM `Registro Global Heroes` ORDER BY `Registro Global Heroes`.`ID_FB` DESC")
 console.log(ediciones)
     res.render('links/jugadores',{ediciones})
     });
