@@ -37,27 +37,29 @@ router.get('/Edmixto', async (req, res) => {
 
  const vistas = await pool.query("SELECT * FROM `tablageneral_mix_ed_20a`");
  const j1 = await pool.query("SELECT * FROM `jor_ed_mix_a20` ORDER BY `jor_ed_mix_a20`.`Jornada` DESC");
+ const equipos = await pool.query("SELECT * FROM `jor_ed_mix_a20` ORDER BY `Equipolc` desc ,`Jornada`  desc");
 
- res.render('partials/index/edlibre' , { vistas , j1 },)
+ res.render('partials/index/edlibre' , { vistas , j1,equipos },)
 })
 ///
 
 // ruta libre ed libre
 router.get('/Edlibre', async (req, res) => {
 
-    const vistas = await pool.query("SELECT * FROM `tablageneral_mix_ed_20a`");
-    const j1 = await pool.query("SELECT * FROM `jor_ed_mix_a20` ORDER BY `jor_ed_mix_a20`.`Jornada` DESC");
-    const equipos = await pool.query("SELECT * FROM `jor_ed_mix_a20` ORDER BY `jor_ed_mix_a20`.`Equipolc` DESC");
-
-    res.render('partials/index/edlibre' , { vistas , j1 ,equipos},)
+    const vistas = await pool.query("SELECT * FROM `ed_general_libre_a20`");
+    const j1 = await pool.query("SELECT * FROM `futbolce_zon58`.`ed_jor_libre_a20` ORDER BY `Jornada` DESC");
+    const equipos = await pool.query("SELECT * FROM `futbolce_zon58`.`ed_jor_libre_a20` ORDER BY `Equipo` DESC, `Jornada` DESC");
+    const goles = await pool.query("SELECT * FROM `ed_tablagoleo_libre_a20` LIMIT 10");
+    console.log(goles);
+    res.render('partials/index/edlibre' , { vistas , j1 ,goles, equipos })
    })
 
    // ruta libre ed femenil
 router.get('/Edfemenil', async (req, res) => {
 
-    const vistas = await pool.query("SELECT * FROM `tablageneral_mix_ed_20a`");
-    const j1 = await pool.query("SELECT * FROM `jor_ed_mix_a20` ORDER BY `jor_ed_mix_a20`.`Jornada` DESC");
-    const equipos = await pool.query("SELECT * FROM `jor_ed_mix_a20` ORDER BY `jor_ed_mix_a20`.`Equipolc` DESC");
+    const vistas = await pool.query("SELECT * FROM `ed_general_fm_a20`");
+    const j1 = await pool.query("SELECT * FROM `futbolce_zon58`.`ed_jor_feme_a20` ORDER BY `Jornada` DESC ");
+    const equipos = await pool.query("SELECT * FROM `futbolce_zon58`.`ed_jor_feme_a20` ORDER BY `Equipo` DESC, `Jornada` ASC");
     const goles = await pool.query("SELECT * FROM `ed_tablagoleo_fm_a20` LIMIT 10");
     console.log(goles);
     res.render('partials/index/edlibre' , { vistas , j1 ,goles, equipos })
@@ -65,20 +67,22 @@ router.get('/Edfemenil', async (req, res) => {
 
    router.get('/Edsub20', async (req, res) => {
 
-    const vistas = await pool.query("SELECT * FROM `tablageneral_mix_ed_20a`");
-    const j1 = await pool.query("SELECT * FROM `jor_ed_mix_a20` ORDER BY `jor_ed_mix_a20`.`Jornada` DESC");
-    const goles = await pool.query("SELECT * FROM `ed_tablagoleo_fm_a20` LIMIT 10");
-    const equipos = await pool.query("SELECT * FROM `jor_ed_mix_a20` ORDER BY `jor_ed_mix_a20`.`Equipolc` ASC , `jor_mx_ed_20`.`Jornada` DESC");
-    res.render('partials/index/edlibre' , { vistas , j1 , goles , equipos })
+    const vistas = await pool.query("SELECT * FROM `ed_general_sub20_a20`");
+    const j1 = await pool.query("SELECT * FROM `futbolce_zon58`.`ed_jor_sub20_a20` ORDER BY `Jornada` DESC");
+    const equipos = await pool.query("SELECT * FROM `futbolce_zon58`.`ed_jor_sub20_a20` ORDER BY `Equipo` DESC, `Jornada` DESC");
+    const goles = await pool.query("SELECT * FROM `ed_tablagoleo_s20_a20` LIMIT 10");
+    console.log(goles);
+    res.render('partials/index/edlibre' , { vistas , j1 ,goles, equipos })
    })
 
    router.get('/Edsub23', async (req, res) => {
 
-    const vistas = await pool.query("SELECT * FROM `tablageneral_mix_ed_20a`");
-    const j1 = await pool.query("SELECT * FROM `jor_ed_mix_a20` ORDER BY `jor_ed_mix_a20`.`Jornada` DESC");
-    const goles = await pool.query("SELECT * FROM `ed_tablagoleo_fm_a20` LIMIT 10");
-    const equipos = await pool.query("SELECT * FROM `jor_ed_mix_a20` ORDER BY `jor_ed_mix_a20`.`Equipolc` ASC , `jor_mx_ed_20`.`Jornada` DESC");
-    res.render('partials/index/edlibre' , { vistas , j1 , goles , equipos })
+    const vistas = await pool.query("SELECT * FROM `ed_general_sub23_a20`");
+    const j1 = await pool.query("SELECT * FROM `futbolce_zon58`.`ed_jor_sub23_a20` ORDER BY `Jornada` DESC");
+    const equipos = await pool.query("SELECT * FROM `futbolce_zon58`.`ed_jor_sub23_a20` ORDER BY `Equipo` DESC, `Jornada` DESC");
+    const goles = await pool.query("SELECT * FROM `ed_tablagoleo_s23_a20` LIMIT 10");
+    console.log(goles);
+    res.render('partials/index/edlibre' , { vistas , j1 ,goles, equipos })
    })
 
 module.exports = router
