@@ -15,6 +15,7 @@ var kids = require('./rutas/rutaskids')
 var copafb = require('./rutas/rutascopafb')
 var rap = require('./rutas/rap')
 var global = require('./rutas/login')
+var edpasadas = require('./rutas/edpasadas')
 
 //fin enrutadores
 const morgan = require('morgan')
@@ -86,6 +87,7 @@ app.use(kids); //ruta liga futbol champions kids
 app.use(copafb); //ruta liga futbol copafb
 app.use(rap); //ruta ligas de rap
 app.use('/admin',global); //ruta ligas de rap
+app.use(edpasadas); //ruta ligas de rap
 
 ///enrutadores
 
