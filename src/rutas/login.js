@@ -1,6 +1,7 @@
 var express = require('express')
 var router = express.Router()
 const pool = require('../database');
+const {isLoggenIn} = require('../lib/aut');
 
 
 router.use(function timeLog (req, res, next) {
@@ -19,7 +20,7 @@ router.get("/menu",(req,res)=>{
             res.render('links/equipo',{ediciones})
             });
         
-            router.post('/equipo', async  (req, res) => {
+            router.post('/equipo',isLoggenIn, async  (req, res) => {
          const {Nombre, Delegado,id} = req.body;
          const equip = {
             Nombre_Equipo : Nombre  ,
@@ -33,7 +34,7 @@ router.get("/menu",(req,res)=>{
         
                     });
         
-          router.get('/editarequipos/:ID', async  (req, res) => {
+          router.get('/editarequipos/:ID',isLoggenIn, async  (req, res) => {
             const {ID} = req.params;
         
         const ediciones = await pool.query("Select * From `Registros Global Equipo Heroes` WHERE id_plantel = ?",[ID])
@@ -41,7 +42,7 @@ router.get("/menu",(req,res)=>{
                 res.render('ligasld/editarequipo',{ediciones})
                     });
         
-              router.post('/editarplantel/:ID', async  (req, res) => {
+              router.post('/editarplantel/:ID',isLoggenIn, async  (req, res) => {
                         const {Nombre, Delegado,id,Escudo,Fecha_Registro} = req.body;
                         const ID = id;
         
@@ -63,13 +64,13 @@ router.get("/menu",(req,res)=>{
                        
                                    });
         
-          router.get('/jugadores', async  (req, res) => {
+          router.get('/jugadores',isLoggenIn, async  (req, res) => {
         const ediciones = await pool.query("SELECT * FROM `Registro Global Heroes` ORDER BY `Registro Global Heroes`.`ID_FB` DESC")
         console.log(ediciones)
             res.render('links/jugadores',{ediciones})
             });
         
-            router.post('/jugador', async  (req, res) => {
+            router.post('/jugador',isLoggenIn, async  (req, res) => {
                 const {Nombre,id} = req.body;
                 const equip = {
                    Nombres : Nombre  ,
@@ -82,7 +83,7 @@ router.get("/menu",(req,res)=>{
                
                            });
         
-         router.get('/editarjugadores/:ID', async  (req, res) => {
+         router.get('/editarjugadores/:ID',isLoggenIn, async  (req, res) => {
             const {ID} = req.params;
         
         const ediciones = await pool.query("Select * From `Registro Global Heroes` WHERE ID_FB = ?",[ID])
@@ -91,7 +92,7 @@ router.get("/menu",(req,res)=>{
                     });
         
         
-           router.post('/editarjugador/:ID', async  (req, res) => {
+           router.post('/editarjugador/:ID',isLoggenIn, async  (req, res) => {
                         const {Nombres, Curp,ID_FB,FOTO} = req.body;
                         const ID = ID_FB;
         

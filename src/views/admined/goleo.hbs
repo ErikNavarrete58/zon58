@@ -264,8 +264,10 @@
 <div class="container">
 <table class="table table-striped">
   <thead>
-    <tr>
-     <th scope="col">Equipo</th>
+    <tr>     
+      <th scope="col">id E</th>
+
+    <th scope="col">Equipo</th>
      <th scope="col">id</th>
       <th scope="col">nombre</th>
       <th scope="col">Dorsal</th>
@@ -275,7 +277,9 @@
   <tbody>
        {{#each mixtagol}}
     <tr>
-      <th scope="col">{{Nombre_Equipo}}</th>
+            <th scope="col">{{Equipo}}</th>
+
+      <th scope="col">{{Equipolc}}</th>
      <th scope="col">{{ID_FB}}</th>
       <th scope="col">{{Nombres}}</th>
       <th scope="col">{{Dorsal}}</th>
@@ -315,7 +319,7 @@
   <tbody>
        {{#each mixtagolind}}
     <tr>
-      <th scope="col">{{Nombre_Equipo}}</th>
+      <th scope="col">{{Equipolc}}</th>
      <th scope="col">{{ID_FB}}</th>
       <th scope="col">{{Nombres}}</th>
       <th scope="col">{{Dorsal}}</th>

@@ -407,7 +407,52 @@ router.get('/edlibreglobal', async (req, res) => {
     res.render('partials/index/edlibre' , { vistas })
 
 })
+///// 
+/////
+/////
+/////
+/////
+/////
+/////Terminan globales
+/////
+/////
+/////
+/////
+/////
 
+///// 
+/////
+/////
+/////
+/////
+/////
+/////inician globales todo liga ed
+/////
+/////
+/////
+/////
+/////
+
+router.get('/edhistorico', async (req, res) => {
+    const vistas = await pool.query("SELECT * FROM `ed_puntoshistoricos`");
+    
+    res.render('partials/index/edlibre' , { vistas })
+
+})
+
+router.get('/edinferiores', async (req, res) => {
+    const vistas = await pool.query("SELECT * FROM `ED_HISTORICO_INFERIORES`");
+    
+    res.render('partials/index/edlibre' , { vistas })
+
+})
+
+router.get('/edmayores', async (req, res) => {
+    const vistas = await pool.query("SELECT * FROM `ED_HISTORICOS_MAYORES`");
+    
+    res.render('partials/index/edlibre' , { vistas })
+
+})
 
 
 module.exports = router

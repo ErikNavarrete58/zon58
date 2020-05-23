@@ -41,10 +41,20 @@ router.post('/idequipo', async (req, res) => {
     const {id} = req.body;
 
     console.log(id)
+    const Globales = await pool.query("Select * From `ed_puntoshistoricos` WHERE ID = ?" , [id])
+    const Globaleslb = await pool.query("Select * From `ed_libre_tabla_historica_2020` WHERE ID = ?" , [id])
+    const Globalesfeme = await pool.query("Select * From `ed_general_historico_femenil_20` WHERE ID = ?" , [id])
+    const Globalesmix = await pool.query("Select * From `ed_general_historico_mixto` WHERE ID = ?" , [id])
+    const Globales23 = await pool.query("Select * From `ed_s23_historica_20` WHERE ID = ?" , [id])
+    const Globales20 = await pool.query("Select * From `ED_S20_HISTORICA_2020` WHERE ID = ?" , [id])
+    const Globales17 = await pool.query("Select * From `ed_historico_17` WHERE ID = ?" , [id])
+
+
+
 const registro = await pool.query("Select * From `Registros Global Equipo Heroes` WHERE Id_plantel = ?" , [id])
 const logrosequipos = await pool.query("Select * From `Historial_Campeones` WHERE Id_plantel = ?" , [id])
 
-res.render('ligasld/idlogrosequipo',{registro,logrosequipos},)
+res.render('ligasld/idlogrosequipo',{registro,logrosequipos,Globales,Globaleslb,Globalesmix,Globalesfeme,Globales23,Globales20,Globales17},)
 })
 
 router.post('/idbuscarequipos', async (req, res) => {

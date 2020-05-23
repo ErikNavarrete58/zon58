@@ -95,7 +95,7 @@ router.get('/vista',isLoggenIn, async  (req, res) => {
 ///Ruta de visualizacion de resultados
 
 ///Ruta de eliminacion de resultados
-router.get('/delete/:ID', async  (req, res) => {
+router.get('/delete/:ID',isLoggenIn, async  (req, res) => {
 const {ID} = req.params;
 await pool.query("Delete From `Mixto 2020 Apertura ed` WHERE ID = ?" , [ID])
     res.redirect('/admin/vista' )
@@ -176,7 +176,7 @@ router.get('/edlibreadd',isLoggenIn, async (req, res) => {
     })
 
 
-router.post('/edlibreadd', async (req, res) => {
+router.post('/edlibreadd',isLoggenIn, async (req, res) => {
     const {Jornada,Fecha,hora,Equipo,Rival,Equipo2,Rival2,Equipo3,Rival3,Equipo4,Rival4,Equipo5,Rival5,hora2,hora3,hora4,hora5} = req.body;
     const Regis1 = {
         Jornada ,
@@ -241,7 +241,7 @@ router.post('/edlibreadd', async (req, res) => {
    
    
    ///Ruta de eliminacion de resultados
-   router.get('/edlibredelete/:ID', async  (req, res) => {
+   router.get('/edlibredelete/:ID',isLoggenIn, async  (req, res) => {
    const {ID} = req.params;
    await pool.query("Delete From `Libre 2020 Apertura ED` WHERE ID = ?" , [ID])
        res.redirect('/admin/edlibrevista' )
@@ -257,7 +257,7 @@ router.post('/edlibreadd', async (req, res) => {
        res.render('links/edit', {ediciones: ediciones[0], opciones:opciones})
            });
    ///edicion de las vistas
- router.post('/edlibreedit/:ID', async  (req, res) => {
+ router.post('/edlibreedit/:ID',isLoggenIn, async  (req, res) => {
        const {ID} = req.params;
    const {Jornada,Fecha,hora,Equipo,Rival,GF,GC,pt1,pt2} = req.body;
    const Regisedit = {
@@ -289,7 +289,7 @@ router.post('/edlibreadd', async (req, res) => {
    
    /// editar goles liga ed
    
- router.get('/edlibregoles', async  (req, res) => {
+ router.get('/edlibregoles',isLoggenIn , async  (req, res) => {
        const opciones = await pool.query("SELECT * FROM `Registros Global Equipo Heroes`");
        const jugadores = await pool.query("SELECT * FROM `Registro Global Heroes`");
        const mixtagol = await pool.query("SELECT * FROM `ed_goleojor_libre_a20` WHERE 1 GROUP by `ID_FB` ORDER BY `ed_goleojor_libre_a20`.`Nombre_Equipo` ASC");
@@ -298,7 +298,7 @@ router.post('/edlibreadd', async (req, res) => {
        res.render('admined/goleo' ,{ opciones , jugadores , mixtagol,mixtagolind})
        });
    
- router.post('/edlibregoles', async  (req, res) => {
+ router.post('/edlibregoles',isLoggenIn, async  (req, res) => {
           console.log
           const {Jornada,Fecha,Hora,Equipo1,Rival,idl,idv,nam1,namv,dor1,dorv,gl,gv,id2,idv2,nam2,namv2,dor2,dorv2,gl2,gv2,idl3,idv3,naml3,namv3,dor3,dorv3,gl3,gv3} = req.body;
           const Regisedit = {
@@ -381,14 +381,14 @@ router.post('/edlibreadd', async (req, res) => {
           res.redirect('/admin/edlibregoles' )
        });
    
- router.get('/edlibreborrargoleadores/:ID', async  (req, res) => {
+ router.get('/edlibreborrargoleadores/:ID',isLoggenIn, async  (req, res) => {
            const {ID} = req.params;
            console.log(ID);
     await pool.query("Delete From `Goleo_ED_Libre_A20` WHERE id_registro = ?" , [ID])
            res.redirect('/admin/edlibregoles' )
                });
    
- router.get('/edlibreeditgoleadores/:ID', async  (req, res) => {
+ router.get('/edlibreeditgoleadores/:ID',isLoggenIn, async  (req, res) => {
             const {ID} = req.params;
                console.log(ID)
     const ediciones = await pool.query("Select * From `Goleo_ED_Libre_A20` WHERE id_registro = ?" , [ID])
@@ -397,7 +397,7 @@ router.post('/edlibreadd', async (req, res) => {
                    });
    
    
- router.post('/edlibreediciongoleadores/:ID', async  (req, res) => {
+ router.post('/edlibreediciongoleadores/:ID',isLoggenIn, async  (req, res) => {
                        const {ID} = req.params;
    
                        const {Jornada,Fecha,hora,id,nombre,Equipo,Dorsal,Rival,Goles,id_registro} = req.body;
@@ -450,7 +450,7 @@ router.get('/edfemadd',isLoggenIn, async (req, res) => {
     })
 
 
-router.post('/edfemadd', async (req, res) => {
+router.post('/edfemadd',isLoggenIn, async (req, res) => {
     const {Jornada,Fecha,hora,Equipo,Rival,Equipo2,Rival2,Equipo3,Rival3,Equipo4,Rival4,Equipo5,Rival5,hora2,hora3,hora4,hora5} = req.body;
     const Regis1 = {
         Jornada ,
@@ -515,7 +515,7 @@ router.post('/edfemadd', async (req, res) => {
    
    
    ///Ruta de eliminacion de resultados
-   router.get('/edfemdelete/:ID', async  (req, res) => {
+   router.get('/edfemdelete/:ID',isLoggenIn, async  (req, res) => {
    const {ID} = req.params;
    await pool.query("Delete From `ED Femenil 2020 Apertura` WHERE ID = ?" , [ID])
        res.redirect('/admin/edfemvista' )
@@ -531,7 +531,7 @@ router.post('/edfemadd', async (req, res) => {
        res.render('admined/editfem', {ediciones: ediciones[0], opciones:opciones})
            });
    ///edicion de las vistas
- router.post('/edfemedit/:ID', async  (req, res) => {
+ router.post('/edfemedit/:ID',isLoggenIn, async  (req, res) => {
        const {ID} = req.params;
    const {Jornada,Fecha,hora,Equipo,Rival,GF,GC,pt1,pt2} = req.body;
    const Regisedit = {
@@ -564,7 +564,7 @@ router.post('/edfemadd', async (req, res) => {
    /// editar goles liga ed
    
  
-router.get('/goles', async  (req, res) => {
+router.get('/goles',isLoggenIn, async  (req, res) => {
     const opciones = await pool.query("SELECT * FROM `Registros Global Equipo Heroes`");
     const jugadores = await pool.query("SELECT * FROM `Registro Global Heroes`");
     const mixtagol = await pool.query("SELECT * FROM `ed_goleojor_feme_a20` WHERE 1 GROUP by `ID_FB` ORDER BY `ed_goleojor_feme_a20`.`Nombre_Equipo` ASC");
@@ -573,7 +573,7 @@ router.get('/goles', async  (req, res) => {
     res.render('links/goleo' ,{ opciones , jugadores , mixtagol,mixtagolind})
     });
 
-    router.post('/goles', async  (req, res) => {
+    router.post('/goles',isLoggenIn, async  (req, res) => {
        console.log
        const {Jornada,Fecha,Hora,Equipo1,Rival,idl,idv,nam1,namv,dor1,dorv,gl,gv,id2,idv2,nam2,namv2,dor2,dorv2,gl2,gv2,idl3,idv3,naml3,namv3,dor3,dorv3,gl3,gv3} = req.body;
        const Regisedit = {
@@ -656,14 +656,14 @@ router.get('/goles', async  (req, res) => {
        res.redirect('/admin/goles' )
     });
 
-    router.get('/borrargoleadores/:ID', async  (req, res) => {
+    router.get('/borrargoleadores/:ID',isLoggenIn, async  (req, res) => {
         const {ID} = req.params;
         console.log(ID);
  await pool.query("Delete From `Goleo_ED_feme_A20` WHERE id_registro = ?" , [ID])
         res.redirect('/admin/goles' )
             });
 
-     router.get('/editgoleadores/:ID', async  (req, res) => {
+     router.get('/editgoleadores/:ID',isLoggenIn, async  (req, res) => {
          const {ID} = req.params;
             console.log(ID)
  const ediciones = await pool.query("Select * From `Goleo_ED_feme_A20` WHERE id_registro = ?" , [ID])
@@ -672,7 +672,7 @@ router.get('/goles', async  (req, res) => {
                 });
 
 
-                router.post('/ediciongoleadores/:ID', async  (req, res) => {
+                router.post('/ediciongoleadores/:ID',isLoggenIn, async  (req, res) => {
                     const {ID} = req.params;
 
                     const {Jornada,Fecha,hora,id,nombre,Equipo,Dorsal,Rival,Goles,id_registro} = req.body;
@@ -727,7 +727,7 @@ router.get('/eds20add',isLoggenIn, async (req, res) => {
     })
 
 
-router.post('/eds20add', async (req, res) => {
+router.post('/eds20add',isLoggenIn, async (req, res) => {
     const {Jornada,Fecha,hora,Equipo,Rival,Equipo2,Rival2,Equipo3,Rival3,Equipo4,Rival4,Equipo5,Rival5,hora2,hora3,hora4,hora5} = req.body;
     const Regis1 = {
         Jornada ,
@@ -792,7 +792,7 @@ router.post('/eds20add', async (req, res) => {
    
    
    ///Ruta de eliminacion de resultados
-   router.get('/eds20delete/:ID', async  (req, res) => {
+   router.get('/eds20delete/:ID',isLoggenIn, async  (req, res) => {
    const {ID} = req.params;
    await pool.query("Delete From `Sub-20 2020 Apertura ED` WHERE ID = ?" , [ID])
        res.redirect('/admin/eds20vista' )
@@ -808,7 +808,7 @@ router.post('/eds20add', async (req, res) => {
        res.render('admined/edits20', {ediciones: ediciones[0], opciones:opciones})
            });
    ///edicion de las vistas
- router.post('/eds20edit/:ID', async  (req, res) => {
+ router.post('/eds20edit/:ID',isLoggenIn, async  (req, res) => {
        const {ID} = req.params;
    const {Jornada,Fecha,hora,Equipo,Rival,GF,GC,pt1,pt2} = req.body;
    const Regisedit = {
@@ -840,7 +840,7 @@ router.post('/eds20add', async (req, res) => {
    
    /// editar goles liga ed
    
- router.get('/eds20goles', async  (req, res) => {
+ router.get('/eds20goles',isLoggenIn, async  (req, res) => {
        const opciones = await pool.query("SELECT * FROM `Registros Global Equipo Heroes`");
        const jugadores = await pool.query("SELECT * FROM `Registro Global Heroes`");
        const mixtagol = await pool.query("SELECT * FROM `ed_goleojor_sub20_a20` WHERE 1 GROUP by `ID_FB` ORDER BY `ed_goleojor_sub20_a20`.`Nombre_Equipo` ASC");
@@ -849,7 +849,7 @@ router.post('/eds20add', async (req, res) => {
        res.render('admined/goleos20' ,{ opciones , jugadores , mixtagol,mixtagolind})
        });
    
- router.post('/eds20goles', async  (req, res) => {
+ router.post('/eds20goles',isLoggenIn, async  (req, res) => {
           console.log
           const {Jornada,Fecha,Hora,Equipo1,Rival,idl,idv,nam1,namv,dor1,dorv,gl,gv,id2,idv2,nam2,namv2,dor2,dorv2,gl2,gv2,idl3,idv3,naml3,namv3,dor3,dorv3,gl3,gv3} = req.body;
           const Regisedit = {
@@ -932,14 +932,14 @@ router.post('/eds20add', async (req, res) => {
           res.redirect('/admin/eds20goles' )
        });
    
- router.get('/eds20borrargoleadores/:ID', async  (req, res) => {
+ router.get('/eds20borrargoleadores/:ID',isLoggenIn, async  (req, res) => {
            const {ID} = req.params;
            console.log(ID);
     await pool.query("Delete From `Goleo_ED_sub20_A20` WHERE id_registro = ?" , [ID])
            res.redirect('/admin/eds20goles' )
                });
    
- router.get('/eds20editgoleadores/:ID', async  (req, res) => {
+ router.get('/eds20editgoleadores/:ID',isLoggenIn, async  (req, res) => {
             const {ID} = req.params;
                console.log(ID)
     const ediciones = await pool.query("Select * From `Goleo_ED_sub20_A20` WHERE id_registro = ?" , [ID])
@@ -948,7 +948,7 @@ router.post('/eds20add', async (req, res) => {
                    });
    
    
- router.post('/eds20ediciongoleadores/:ID', async  (req, res) => {
+ router.post('/eds20ediciongoleadores/:ID',isLoggenIn, async  (req, res) => {
                        const {ID} = req.params;
    
                        const {Jornada,Fecha,hora,id,nombre,Equipo,Dorsal,Rival,Goles,id_registro} = req.body;
@@ -1003,7 +1003,7 @@ router.get('/eds23add',isLoggenIn, async (req, res) => {
     })
 
 
-router.post('/eds23add', async (req, res) => {
+router.post('/eds23add',isLoggenIn, async (req, res) => {
     const {Jornada,Fecha,hora,Equipo,Rival,Equipo2,Rival2,Equipo3,Rival3,Equipo4,Rival4,Equipo5,Rival5,hora2,hora3,hora4,hora5} = req.body;
     const Regis1 = {
         Jornada ,
@@ -1068,7 +1068,7 @@ router.post('/eds23add', async (req, res) => {
    
    
    ///Ruta de eliminacion de resultados
-   router.get('/eds23delete/:ID', async  (req, res) => {
+   router.get('/eds23delete/:ID',isLoggenIn, async  (req, res) => {
    const {ID} = req.params;
    await pool.query("Delete From `Sub-23 2020 Apertura ED` WHERE ID = ?" , [ID])
        res.redirect('/admin/eds23vista' )
@@ -1084,7 +1084,7 @@ router.post('/eds23add', async (req, res) => {
        res.render('admined/edits23', {ediciones: ediciones[0], opciones:opciones})
            });
    ///edicion de las vistas
- router.post('/eds23edit/:ID', async  (req, res) => {
+ router.post('/eds23edit/:ID',isLoggenIn, async  (req, res) => {
        const {ID} = req.params;
    const {Jornada,Fecha,hora,Equipo,Rival,GF,GC,pt1,pt2} = req.body;
    const Regisedit = {
@@ -1116,7 +1116,7 @@ router.post('/eds23add', async (req, res) => {
    
    /// editar goles liga ed
    
- router.get('/eds23goles', async  (req, res) => {
+ router.get('/eds23goles',isLoggenIn, async  (req, res) => {
        const opciones = await pool.query("SELECT * FROM `Registros Global Equipo Heroes`");
        const jugadores = await pool.query("SELECT * FROM `Registro Global Heroes`");
        const mixtagol = await pool.query("SELECT * FROM `ed_goleojor_sub23_a20` WHERE 1 GROUP by `ID_FB` ORDER BY `ed_goleojor_sub23_a20`.`Nombre_Equipo` ASC");
@@ -1125,7 +1125,7 @@ router.post('/eds23add', async (req, res) => {
        res.render('admined/goleos23' ,{ opciones , jugadores , mixtagol,mixtagolind})
        });
    
- router.post('/eds23goles', async  (req, res) => {
+ router.post('/eds23goles',isLoggenIn, async  (req, res) => {
           console.log
           const {Jornada,Fecha,Hora,Equipo1,Rival,idl,idv,nam1,namv,dor1,dorv,gl,gv,id2,idv2,nam2,namv2,dor2,dorv2,gl2,gv2,idl3,idv3,naml3,namv3,dor3,dorv3,gl3,gv3} = req.body;
           const Regisedit = {
@@ -1208,14 +1208,14 @@ router.post('/eds23add', async (req, res) => {
           res.redirect('/admin/eds23goles' )
        });
    
- router.get('/eds23borrargoleadores/:ID', async  (req, res) => {
+ router.get('/eds23borrargoleadores/:ID',isLoggenIn, async  (req, res) => {
            const {ID} = req.params;
            console.log(ID);
     await pool.query("Delete From `Goleo_ED_sub23_A20` WHERE id_registro = ?" , [ID])
            res.redirect('/admin/eds23goles' )
                });
    
- router.get('/eds23editgoleadores/:ID', async  (req, res) => {
+ router.get('/eds23editgoleadores/:ID',isLoggenIn, async  (req, res) => {
             const {ID} = req.params;
                console.log(ID)
     const ediciones = await pool.query("Select * From `Goleo_ED_sub23_A20` WHERE id_registro = ?" , [ID])
@@ -1224,7 +1224,7 @@ router.post('/eds23add', async (req, res) => {
                    });
    
    
- router.post('/eds23ediciongoleadores/:ID', async  (req, res) => {
+ router.post('/eds23ediciongoleadores/:ID',isLoggenIn, async  (req, res) => {
                        const {ID} = req.params;
    
                        const {Jornada,Fecha,hora,id,nombre,Equipo,Dorsal,Rival,Goles,id_registro} = req.body;
