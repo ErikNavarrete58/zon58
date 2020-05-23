@@ -30,7 +30,7 @@
 
  <select name="Equipo" class="form-control" placeholder="Equipo1">
                {{#each opciones}}
-                <option value="{{id_plantel}}">{{Nombre_Equipo}}</option>
+                <option value="{{id_plantel}}">{{id_plantel}}-{{Nombre_Equipo}}</option>
                  {{/each}}
                 </select>    
 
@@ -41,7 +41,7 @@
                   <h6> {{ediciones.Rival}} </h3>
  <select name="Rival" class="form-control" placeholder="Equipo1">
                {{#each opciones}}
-                <option value="{{id_plantel}}">{{Nombre_Equipo}}</option>
+                <option value="{{id_plantel}}">{{id_plantel}}-{{Nombre_Equipo}}</option>
                  {{/each}}
                 </select>   
                </div>

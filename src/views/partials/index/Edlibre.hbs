@@ -1,11 +1,11 @@
 
 <div class="container p-4 mx-auto">
-    <a href="#tablageneral" class="btn btn-success">Tabla General</a>
 
-<a href="#tablagoleo" class="btn btn-success">Tabla Goleo</a>
-<a href="#resuljornada" class="btn btn-success">Resultados por Jornada</a>
-<a href="#resulequipos" class="btn btn-success">Resultados por Equipos</a>
-
+<a href="#tablageneral" class="btn btn-success mt-1">Tabla General</a>
+<a href="#tablagoleo" class="btn btn-success mt-1">Tabla Goleo</a>
+<a href="#resuljornada" class="btn btn-success mt-1">Resultados por Jornada</a>
+<a href="#resulequipos" class="btn btn-success mt-1">Resultados por Equipos</a>
+<a href="/edpasado" class="btn btn-success mt-1">Tablas Historicas</a>
 
 </div>
 
@@ -57,11 +57,10 @@
 <a name="tablagoleo"></a>
 
 <div class="container p-4 mx-auto">
-    <a href="#tablageneral" class="btn btn-success">Tabla General</a>
-
-<a href="#tablagoleo" class="btn btn-success">Tabla Goleo</a>
-<a href="#resuljornada" class="btn btn-success">Resultados por Jornada</a>
-<a href="#resulequipos" class="btn btn-success">Resultados por Equipos</a>
+<a href="#tablageneral" class="btn btn-success mt-1">Tabla General</a>
+<a href="#tablagoleo" class="btn btn-success mt-1">Tabla Goleo</a>
+<a href="#resuljornada" class="btn btn-success mt-1">Resultados por Jornada</a>
+<a href="#resulequipos" class="btn btn-success mt-1">Resultados por Equipos</a>
 
 
 </div>
@@ -83,7 +82,7 @@
 
       <th scope="col">Goles</th>
       <th scope="col">Nombre</th>
-      <th scope="col">id</th>
+      <th scope="col">Apellido</th>
       <th scope="col">Equipo</th>
       <th scope="col">Dorsal</th>
       <th scope="col">Torneo</th>
@@ -101,12 +100,12 @@
       <td><img src="{{Escudo}}" width="40px" height="40px" class="img-thumbnail"></img></td>
       <td><img src="{{Foto}}" width="40px" height="40px" class="img-thumbnail"></img></td>
 
-      <td>{{G}}</td>
+      <td>{{goles}}</td>
       <td>{{Nombres}}</td>
-      <td> {{ID}} </td>
+      <td> {{Apellido_Materno}} </td>
       <td>{{Nombre_Equipo}}</td>
       <td>{{Dorsal}}</td>
-      <td>{{id_torneo}}</td>
+      <td>{{torneo}}</td>
 
     </tr>
   {{/each}}
@@ -121,11 +120,11 @@
 
 <a name="resuljornada"></a>
 <div class="container p-4 mx-auto">
-    <a href="#tablageneral" class="btn btn-success">Tabla General</a>
+    <a href="#tablageneral" class="btn btn-success mt-1">Tabla General</a>
 
-<a href="#tablagoleo" class="btn btn-success">Tabla Goleo</a>
-<a href="#resuljornada" class="btn btn-success">Resultados por Jornada</a>
-<a href="#resulequipos" class="btn btn-success">Resultados por Equipos</a>
+<a href="#tablagoleo" class="btn btn-success mt-1">Tabla Goleo</a>
+<a href="#resuljornada" class="btn btn-success mt-1">Resultados por Jornada</a>
+<a href="#resulequipos" class="btn btn-success mt-1">Resultados por Equipos</a>
 
 
 </div>
@@ -165,8 +164,8 @@
     <tr align="center">
       <td>{{Jornada}}</td>
 
-      <td><img src="{{EscLocal}}" width="40px" height="40px" class="img-thumbnail"></img></td>
-      <td>{{Equilocal}}</td>
+      <td><img src="{{Escudolc}}" width="40px" height="40px" class="img-thumbnail"></img></td>
+      <td>{{Equipolc}}</td>
       <td>{{GF}}</td>
       <td>{{GC}}</td>
       <td>{{Nombre_Equipo}}</td>
@@ -187,11 +186,11 @@
 
 <a name="resulequipos"></a>
 <div class="container p-4 mx-auto">
-    <a href="#tablageneral" class="btn btn-success">Tabla General</a>
+    <a href="#tablageneral" class="btn btn-success mt-1">Tabla General</a>
 
-<a href="#tablagoleo" class="btn btn-success">Tabla Goleo</a>
-<a href="#resuljornada" class="btn btn-success">Resultados por Jornada</a>
-<a href="#resulequipos" class="btn btn-success">Resultados por Equipos</a>
+<a href="#tablagoleo" class="btn btn-success mt-1">Tabla Goleo</a>
+<a href="#resuljornada" class="btn btn-success mt-1">Resultados por Jornada</a>
+<a href="#resulequipos" class="btn btn-success mt-1">Resultados por Equipos</a>
 
 
 </div>
@@ -234,8 +233,8 @@
     <tr align="center">
       <td>{{Jornada}}</td>
 
-      <td><img src="{{EscLocal}}" width="40px" height="40px" class="img-thumbnail"></img></td>
-      <td>{{Equilocal}}</td>
+      <td><img src="{{Escudolc}}" width="40px" height="40px" class="img-thumbnail"></img></td>
+      <td>{{Equipolc}}</td>
       <td>{{GF}}</td>
       <td>{{GC}}</td>
       <td>{{Nombre_Equipo}}</td>
@@ -255,11 +254,11 @@
 </div>
 
 <div class="container p-4 mx-auto">
-    <a href="#tablageneral" class="btn btn-success">Tabla General / Inicio</a>
+    <a href="#tablageneral" class="btn btn-success mt-1">Tabla General / Inicio</a>
 
-<a href="#tablagoleo" class="btn btn-success">Tabla Goleo</a>
-<a href="#resuljornada" class="btn btn-success">Resultados por Jornada</a>
-<a href="#resulequipos" class="btn btn-success">Resultados por Equipos</a>
+<a href="#tablagoleo" class="btn btn-success mt-1">Tabla Goleo</a>
+<a href="#resuljornada" class="btn btn-success mt-1">Resultados por Jornada</a>
+<a href="#resulequipos" class="btn btn-success mt-1">Resultados por Equipos</a>
 
 
 </div>
