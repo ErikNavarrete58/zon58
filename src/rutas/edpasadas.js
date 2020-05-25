@@ -38,7 +38,9 @@ router.get('/edlibrea2019', async (req, res) => {
 
 router.get('/edlibrec2018', async (req, res) => {
     const vistas = await pool.query("SELECT * FROM `ed_general_libre_c18`");
-    res.render('partials/index/edlibre' , { vistas})
+    const goles = await pool.query("SELECT * FROM `ed_tablagoleo_c18` LIMIT 10");
+
+    res.render('partials/index/edlibre' , { vistas,goles})
 
 })
 
@@ -69,7 +71,9 @@ router.get('/edlibrec2016', async (req, res) => {
     const vistas = await pool.query("SELECT * FROM `ed_general_libre_c16`");
     const j1 = await pool.query("SELECT * FROM `futbolce_zon58`.`ed_jor_libre_c16` ORDER BY `Jornada` DESC");
     const equipos = await pool.query("SELECT * FROM `futbolce_zon58`.`ed_jor_libre_c16` ORDER BY `Equipo` DESC, `Jornada` DESC");
-    res.render('partials/index/edlibre' , { vistas ,j1 , equipos})
+    const goles = await pool.query("SELECT * FROM `ed_tablagoleo_libre_a16` LIMIT 10");
+
+    res.render('partials/index/edlibre' , { vistas ,j1 , equipos,goles})
 
 })
 
@@ -77,7 +81,9 @@ router.get('/edlibrec2015', async (req, res) => {
     const vistas = await pool.query("SELECT * FROM `ed_general_libre_c15`");
     const j1 = await pool.query("SELECT * FROM `futbolce_zon58`.`ed_jor_libre_c15` ORDER BY `Jornada` DESC");
     const equipos = await pool.query("SELECT * FROM `futbolce_zon58`.`ed_jor_libre_c15` ORDER BY `Equipo` DESC, `Jornada` DESC");
-    res.render('partials/index/edlibre' , { vistas ,j1 , equipos})
+    const goles = await pool.query("SELECT * FROM `ed_tablagoleo_librec15` LIMIT 10");
+
+    res.render('partials/index/edlibre' , { vistas ,j1 , equipos,goles})
 
 })
 
@@ -86,7 +92,9 @@ router.get('/edlibrea2015', async (req, res) => {
     const vistas = await pool.query("SELECT * FROM `ed_general_libre_a15`");
     const j1 = await pool.query("SELECT * FROM `futbolce_zon58`.`ed_jor_libre_a15` ORDER BY `Jornada` DESC");
     const equipos = await pool.query("SELECT * FROM `futbolce_zon58`.`ed_jor_libre_a15` ORDER BY `Equipo` DESC, `Jornada` DESC");
-    res.render('partials/index/edlibre' , { vistas ,j1 , equipos})
+    const goles = await pool.query("SELECT * FROM `ed_tablagoleo_libre_a15` LIMIT 10");
+
+    res.render('partials/index/edlibre' , { vistas ,j1 , equipos,goles})
 
 })
 
@@ -94,7 +102,9 @@ router.get('/edlibre2014', async (req, res) => {
     const vistas = await pool.query("SELECT * FROM `ed_general_libre_14`");
     const j1 = await pool.query("SELECT * FROM `futbolce_zon58`.`ed_jor_libre_a14` ORDER BY `Jornada` DESC");
     const equipos = await pool.query("SELECT * FROM `futbolce_zon58`.`ed_jor_libre_a14` ORDER BY `Equipo` DESC, `Jornada` DESC");
-    res.render('partials/index/edlibre' , { vistas ,j1 , equipos})
+    const goles = await pool.query("SELECT * FROM `ed_tablagoleo_libre_14` LIMIT 10");
+
+    res.render('partials/index/edlibre' , { vistas ,j1 , equipos,goles})
 
 })
 ///// 
@@ -113,9 +123,11 @@ router.get('/edlibre2014', async (req, res) => {
 
 router.get('/edfemenilc19', async (req, res) => {
     const vistas = await pool.query("SELECT * FROM `ed_general_feme_c19`");
+    const goles = await pool.query("SELECT * FROM `ed_tablagoleo_fm_c19` LIMIT 10");
+
     const j1 = await pool.query("SELECT * FROM `futbolce_zon58`.`ed_jor_feme_c19` ORDER BY `Jornada` DESC");
     const equipos = await pool.query("SELECT * FROM `futbolce_zon58`.`ed_jor_feme_c19` ORDER BY `Equipo` DESC, `Jornada` DESC");
-    res.render('partials/index/edlibre' , { vistas ,j1 , equipos})
+    res.render('partials/index/edlibre' , { vistas ,j1 , equipos, goles})
 
 })
 
@@ -147,7 +159,9 @@ router.get('/edfemenilc17', async (req, res) => {
     const vistas = await pool.query("SELECT * FROM `ed_general_feme_c17`");
     const j1 = await pool.query("SELECT * FROM `futbolce_zon58`.`ed_jor_feme_c17` ORDER BY `Jornada` DESC");
     const equipos = await pool.query("SELECT * FROM `futbolce_zon58`.`ed_jor_feme_c17` ORDER BY `Equipo` DESC, `Jornada` DESC");
-    res.render('partials/index/edlibre' , { vistas ,j1 , equipos})
+    const goles = await pool.query("SELECT * FROM `ed_tablagoleo_17` LIMIT 10");
+
+    res.render('partials/index/edlibre' , { vistas ,j1 , equipos,goles})
 
 })
 
