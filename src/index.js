@@ -115,7 +115,7 @@ res.redirect('/login')
 });
 
 /// instalacion e iniciacion del modulo exprees para crear servidor
-app.listen(80, function () {
+app.listen(8080, function () {
   console.log('Servidor listo escuchando por el puerto 80');
 });
 //direccion y puerto principal del que escucha nuestro navegador

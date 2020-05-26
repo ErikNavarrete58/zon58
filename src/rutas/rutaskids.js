@@ -32,4 +32,5 @@ router.get('/Kids', async (req, res) => {
     res.render('partials/index/edlibre' , { vistas , j1 , goles , equipos })
    })
 
+  
 module.exports = router

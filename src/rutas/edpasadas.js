@@ -386,8 +386,9 @@ router.get('/eds1718', async (req, res) => {
 /////
 router.get('/edfemeglobal', async (req, res) => {
     const vistas = await pool.query("SELECT * FROM `ed_general_historico_femenil_20`");
-    
-    res.render('partials/index/edlibre' , { vistas })
+    const goles = await pool.query("SELECT * FROM `ed_goleohistorico_femenil` LIMIT 15");
+
+    res.render('partials/index/edlibre' , { vistas,goles })
 
 })
 router.get('/edmixtaglobal', async (req, res) => {
@@ -417,8 +418,9 @@ router.get('/eds17global', async (req, res) => {
 
 router.get('/edlibreglobal', async (req, res) => {
     const vistas = await pool.query("SELECT * FROM `ed_libre_tabla_historica_2020`");
-    
-    res.render('partials/index/edlibre' , { vistas })
+    const goles = await pool.query("SELECT * FROM `ed_goleohistorico_libre` LIMIT 15");
+
+    res.render('partials/index/edlibre' , { vistas,goles })
 
 })
 ///// 

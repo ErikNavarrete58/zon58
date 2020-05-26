@@ -9,6 +9,9 @@ router.use(function timeLog (req, res, next) {
 })
 
 
+////
+///// ruta principal
+///
 
 router.get('/copafb', async (req, res) => {
 
@@ -16,28 +19,93 @@ router.get('/copafb', async (req, res) => {
     res.render('copafb/inicio')
    })
 
+/////
+/////
+/////
+/////Rutas categorias principales
+////
+////
+////
 
-   router.get('/copafb18', async (req, res) => {
 
-    const vistas = await pool.query("SELECT * FROM `tablageneral_mix_ed_20a`");
-    const j1 = await pool.query("SELECT * FROM `jor_mx_ed_20` ORDER BY `jor_mx_ed_20`.`Jornada` DESC");
-    const goles = await pool.query("SELECT * FROM `golsim_ed_fem_20` LIMIT 10");
-    const equipos = await pool.query("SELECT * FROM `jor_mx_ed_20` ORDER BY `jor_mx_ed_20`.`Equilocal` ASC , `jor_mx_ed_20`.`Jornada` DESC");
-    res.render('partials/index/edlibre' , { vistas , j1 , goles , equipos })
+   router.get('/Copafb18', async (req, res) => {
+
+    const vistas = await pool.query("SELECT * FROM `FB_tablageneral_sub18_a20`");
+    
+    res.render('partials/index/edlibre' , { vistas  })
    })
 
-   router.get('/copafb20', async (req, res) => {
+   router.get('/Copafb20', async (req, res) => {
 
-    const vistas = await pool.query("SELECT * FROM `tablageneral_mix_ed_20a`");
-    const j1 = await pool.query("SELECT * FROM `jor_mx_ed_20` ORDER BY `jor_mx_ed_20`.`Jornada` DESC");
-    const goles = await pool.query("SELECT * FROM `golsim_ed_fem_20` LIMIT 10");
-    const equipos = await pool.query("SELECT * FROM `jor_mx_ed_20` ORDER BY `jor_mx_ed_20`.`Equilocal` ASC , `jor_mx_ed_20`.`Jornada` DESC");
-    res.render('partials/index/edlibre' , { vistas , j1 , goles , equipos })
+    const vistas = await pool.query("SELECT * FROM `FB_tablageneral_sub20_a20`");
+    
+    res.render('partials/index/edlibre' , { vistas  })
    })
 
+/////
+/////
+/////
+///// FIN Rutas categorias principales
+////
+////
+////
+
+
+/////
+/////
+/////
+/////  Rutas BUSCAR
+////
+////
+////
+
+   router.get('/fbidequipo', async (req, res) => {
+    res.render('copafb/idequipo')
+
+})
+
+router.get('/fbhistorica', async (req, res) => {
+    const vistas = await pool.query("SELECT * FROM `FB_historica_global_20`");
+
+    res.render('partials/index/edlibre' , { vistas  })
+
+})
+
+router.post('/fbidequipo', async (req, res) => {
+    const {id} = req.body;
+
+    console.log(id)
+    const Globales = await pool.query("Select * From `FB_historica_global_20` WHERE ID = ?" , [id])
+  
+    const Globales20 = await pool.query("Select * From `FB_tablageneral_sub20_a20` WHERE ID = ?" , [id])
+    const Globales17 = await pool.query("Select * From `FB_tablageneral_sub18_a20` WHERE ID = ?" , [id])
 
 
 
+const registro = await pool.query("Select * From `Registros Global Equipo Heroes` WHERE Id_plantel = ?" , [id])
+
+res.render('copafb/idlogrosequipo',{registro,Globales,Globales20,Globales17},)
+})
+
+router.get('/fbid', function (req, res) {
+    res.render('copafb/id')
+})
+
+router.post('/fbid', async (req, res) => {
+    const {id} = req.body;
+
+    console.log(id)
+const registro = await pool.query("Select * From `Registro Global Heroes` WHERE ID_FB = ?" , [id])
+
+res.render('copafb/idlogros',{registro},)
+})
+/////
+/////
+/////
+///// FIN Rutas BUSCAR
+////
+////
+////
 
 
 module.exports = router

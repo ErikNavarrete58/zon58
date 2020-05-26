@@ -19,8 +19,12 @@ router.post('/id', async (req, res) => {
 const registro = await pool.query("Select * From `Registro Global Heroes` WHERE ID_FB = ?" , [id])
 const premiacion = await pool.query("Select * From `Premiaciones_Individuales` WHERE ID_FB = ?" , [id])
 const toractual = await pool.query("Select * From `ed_tablagoleo_fm_a20` WHERE ID_FB = ?" , [id])
+const goleslibre = await pool.query("Select * From `ed_goleohistorico_libre` WHERE ID_FB = ?" , [id])
+const golesfeme = await pool.query("Select * From `ed_goleohistorico_femenil` WHERE ID_FB = ?" , [id])
+const goles23 = await pool.query("Select * From `ed_tablagoleo_s23_a20` WHERE ID_FB = ?" , [id])
+const goles20 = await pool.query("Select * From `ed_tablagoleo_s20_a20` WHERE ID_FB = ?" , [id])
 
-res.render('ligasld/idlogros',{registro,premiacion, toractual},)
+res.render('ligasld/idlogros',{registro,premiacion, toractual,goleslibre,golesfeme,goles23,goles20},)
 })
 
 router.post('/idbuscar', async (req, res) => {
